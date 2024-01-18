@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CursosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 //index
 Route::get('/', function () {
-    return view('inicio');
+    return view('template_admin');
 });
+
+Route::get('/cursos_activos',[CursosController::class, 'index']);
+Route::get('/formulario_curso',[CursosController::class, 'formRegistro']);
