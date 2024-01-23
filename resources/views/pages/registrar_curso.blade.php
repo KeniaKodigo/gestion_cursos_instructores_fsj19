@@ -5,7 +5,8 @@
         <h5 class="card-header">Registro Curso</h5>
 
         <div class="container">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{route('guardar_curso')}}" method="post" enctype="multipart/form-data">
+                @csrf
                 <label for="">Titulo</label>
                 <input type="text" class="form-control" name="titulo">
 
@@ -36,7 +37,7 @@
                 </select>
 
                 <label for="">Seleccion un instructor</label>
-                <select name="categoria" id="" class="form-control">
+                <select name="instructor" id="" class="form-control">
                     @foreach ($instructores as $value)
                         <option value={{$value->id}}>{{$value->nombre}}</option>
                     @endforeach
