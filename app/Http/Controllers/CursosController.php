@@ -93,6 +93,7 @@ class CursosController extends Controller
             $imagen_nombre = $request->post('imagen_previa');
         }
 
+        //select * from cursos where id = 2
         $curso = Cursos::find($id);
         $curso->titulo = $request->post('titulo');
         $curso->duracion = $request->post('duracion');
@@ -102,5 +103,19 @@ class CursosController extends Controller
 
         //back() -> actualizame la misma vista en la que estoy
         return back();
+    }
+
+    public function cambiar_estado($id){
+        //select * from table where id = $id
+        $curso = Cursos::find($id);
+        $curso->id_estado = 2; //curso inactivo
+        $curso->update();
+
+        return back();
+    }
+
+    //metodo para testear
+    public function testear(){
+        return view('template_publica');
     }
 }

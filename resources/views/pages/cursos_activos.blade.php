@@ -34,7 +34,11 @@
                         <td>{{$curso->nombre}}</td>
                         <td>
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCurso{{$curso->id}}">Editar</button>
-                            <button>Cambiar Estado</button>
+                            <form action="{{route('desactivar_curso', $curso->id)}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-danger">Cambiar Estado</button>
+                            </form>
                         </td>
                     </tr>
 

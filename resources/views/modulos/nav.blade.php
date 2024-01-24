@@ -38,7 +38,7 @@ id="layout-navbar">
                     </div>
                     </div>
                     <div class="flex-grow-1">
-                    <span class="fw-medium d-block">John Doe</span>
+                    <span class="fw-medium d-block">@php echo session('admin') @endphp</span>
                     <small class="text-muted">Admin</small>
                     </div>
                 </div>
@@ -57,10 +57,10 @@ id="layout-navbar">
                 <div class="dropdown-divider"></div>
             </li>
             <li>
-                <a class="dropdown-item" href="javascript:void(0);">
-                <i class="bx bx-power-off me-2"></i>
-                <span class="align-middle">Log Out</span>
-                </a>
+                <form action="{{route('cerrar_sesion')}}" method="POST">
+                    @method('GET')
+                    <button class="btn btn-danger"><i class='bx bx-user-x'></i>Cerrar Sesion</button>
+                </form>
             </li>
             </ul>
         </li>
