@@ -118,4 +118,16 @@ class CursosController extends Controller
     public function testear(){
         return view('template_publica');
     }
+
+    //metodo para obtener los cursos en el apartado publico
+    public function lista_cursos_publico(){
+        /**
+         * -> unir tablas (instructores, categoria)
+         * select cursos.*, categorias.categoria, instructores.nombre,instructores.especialidad, instructores.descripcion from cursos INNER JOIN categorias ON cursos.id_categoria = categorias.id INNER JOIN instructores ON cursos.id_instructor = instructores.id WHERE cursos.id_estado = 1
+         */
+
+        $cursos_activos = Cursos::join('categorias', 'cursos.id_categoria', '=', 'categorias.id')->join('instructores', 'cursos.id_instructor', '=', 'instructores.id')->select('cursos.*', 'categorias.categoria', 'instructores.nombre','instructores.especialidad', 'instructores.descripcion as trayectoria')->where('cursos.id_estado','=', 1)->get();
+
+        return view('template_publica', compact('cursos_activos'));
+    }
 }

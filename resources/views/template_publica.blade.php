@@ -63,24 +63,46 @@
                     <!-- Grid Card -->
                     <h6 class="pb-1 mb-4 text-muted">Grid Card</h6>
                     <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Titulo</h5>
-                                        <p class="card-text">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, rem? Eius eum libero nam est omnis esse possimus perferendis, vero dignissimos hic placeat magnam maxime, quia, cupiditate consectetur quam voluptas?
-                                        </p>
+                        @foreach ($cursos_activos as $item)
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="{{url('/')}}/imagenes/{{$item->imagen_curso}}" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$item->titulo}}</h5>
+                                    <p class="card-text">
+                                        {{$item->descripcion}}
+                                    </p>
+                                    <p class="card-text">
+                                       <strong>Nivel del Curso:</strong> {{$item->nivel_curso}}
+                                    </p>
 
-                                        <button class="btn btn-primary"><i class='bx bxs-detail'></i> Ver Mas</button>
-                                        @if (!empty(session('cliente')))
-                                            <button class="btn btn-secondary"><i class='bx bxs-badge-check'></i> Inscribirme
-                                            </button>
-                                        @endif
-                                        
-                                    </div>
+                                    <p class="card-text">
+                                        <strong>Duracion:</strong> {{$item->duracion}}
+                                     </p>
+
+                                     <p class="card-text">
+                                        <strong>Instructor:</strong> {{$item->nombre}}
+                                     </p>
+
+                                     <p class="card-text">
+                                        <strong>Especialidad:</strong> {{$item->especialidad}}
+                                     </p>
+
+                                     <p class="card-text">
+                                        <strong>Trayectoria:</strong> {{$item->trayectoria}}
+                                     </p>
+
+                                    <button class="btn btn-primary"><i class='bx bxs-detail'></i> Ver Mas</button>
+                                    @if (!empty(session('cliente')))
+                                        <button class="btn btn-secondary"><i class='bx bxs-badge-check'></i> Inscribirme
+                                        </button>
+                                    @endif
+                                    
                                 </div>
                             </div>
+                        </div>
+                        @endforeach
+                            
                     </div>
                     <!--/ Card layout -->
                 </div>

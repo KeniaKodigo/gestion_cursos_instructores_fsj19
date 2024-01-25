@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutenticarController;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //index
-Route::get('/', function () {
-    return view('template_publica');
-})->name('template-publica');
+Route::get('/', [CursosController::class, 'lista_cursos_publico'])->name('template-publica');
 
 Route::get('/Login', function () {
     return view('login');
@@ -46,4 +45,13 @@ Route::get('/prueba', [CursosController::class, 'testear']);
 Route::get('/prueba2', function () {
     return view('login');
 });
+
+
+Route::get('/reporte_prueba',[PDFController::class, 'index']);
+Route::get('/cursos_categoria',[PDFController::class, 'cursos_categoria']);
+Route::get('/reporte_categoria_curso', [PDFController::class, 'reporteByCategoria'])->name('reporte_por_categoria');
+/**
+ * route
+ * url
+ */
 
